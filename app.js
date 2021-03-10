@@ -1,7 +1,7 @@
 const net = require("net");
 const client = new net.Socket();
 
-client.connect(25503, "127.0.0.1", () => {
+client.connect(25053, "127.0.0.1", () => {
     console.log("Connected");
     client.write("First Ping ... \n");
 });
