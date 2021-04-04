@@ -1,9 +1,11 @@
-const net = require("net");
+require('dotenv').config();
+
+const net = require('net');
 const client = new net.Socket();
 
-const token = '$2y$10$9z/ch9hTc5rNQF9ks7cQoui5ISEeTCa73Ixm3c2UiJawY33WrnuuG';
+const token = process.env.APP_TOKEN;
 
-client.connect(25053, "127.0.0.1", () => {
+client.connect(process.env.SERVER_PORT, process.env.SERVER_IP, () => {
     console.log("Connected");
     client.write("AUTHENTICATION=" + token, "utf8");
 });
@@ -20,4 +22,4 @@ setInterval(() => {
     let sent = "Pong ...";
     client.write(sent);
     console.log("Send: " + sent);
-}, 3000);
+}, process.env.DEFAULT_PONG_INTERVAL);
